@@ -11,12 +11,29 @@
         <em class="fa-solid fa-ellipsis-vertical"></em>
       </button>
       <mat-menu #moreMenu="matMenu">
-        <button mat-menu-item [matMenuTriggerFor]="sort">Filter</button>
+        <button mat-menu-item [matMenuTriggerFor]="menuStatus">Filter By Status</button>
+        <button mat-menu-item [matMenuTriggerFor]="menuGender">Filter By Gender</button>
+        <button mat-menu-item [matMenuTriggerFor]="menuSpecies">Filter By Species</button>
       </mat-menu>
-      <mat-menu #sort="matMenu">
-        <button mat-menu-item (click)="filter('all')">{{ 'all' | titlecase }}</button>  
+
+      <mat-menu #menuStatus="matMenu">
+        <button mat-menu-item (click)="filterStatus('all')">{{ 'all' | titlecase }}</button>  
         <div *ngFor="let item of allStatus">
-          <button mat-menu-item (click)="filter(item)">{{ item | titlecase }}</button>  
+          <button mat-menu-item (click)="filterStatus(item)">{{ item | titlecase }}</button>  
+        </div>
+      </mat-menu>
+
+      <mat-menu #menuGender="matMenu">
+        <button mat-menu-item (click)="filterGender('all')">{{ 'all' | titlecase }}</button>  
+        <div *ngFor="let item of allGenders">
+          <button mat-menu-item (click)="filterGender(item)">{{ item | titlecase }}</button>  
+        </div>
+      </mat-menu>
+
+      <mat-menu #menuSpecies="matMenu">
+        <button mat-menu-item (click)="filterSpecies('all')">{{ 'all' | titlecase }}</button>  
+        <div *ngFor="let item of allSpecies">
+          <button mat-menu-item (click)="filterSpecies(item)">{{ item | titlecase }}</button>  
         </div>
       </mat-menu>
     </div>
