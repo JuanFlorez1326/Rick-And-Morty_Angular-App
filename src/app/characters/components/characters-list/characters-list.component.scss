@@ -6,6 +6,13 @@
     box-sizing: border-box;
 }
 
+.content-loading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .all-cards-content {
     width: 100%;
     display: flex;
