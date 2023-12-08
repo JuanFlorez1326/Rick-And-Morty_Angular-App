@@ -1,13 +1,35 @@
 <app-ordering
-    [data]="characters"
+    [data]="leakedCharacters"
 ></app-ordering>
+
+<div class="filter-content">
+    <div>
+      <h1 class="title">Characters</h1>
+    </div>
+    <div>
+      <button class="btn-second-menu" mat-icon-button matTooltip="Filtering options" [matMenuTriggerFor]="moreMenu">
+        <em class="fa-solid fa-ellipsis-vertical"></em>
+      </button>
+      <mat-menu #moreMenu="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="sort">Filter</button>
+      </mat-menu>
+      <mat-menu #sort="matMenu">
+        <button mat-menu-item (click)="filter('all')">{{ 'all' | titlecase }}</button>  
+        <div *ngFor="let item of allStatus">
+          <button mat-menu-item (click)="filter(item)">{{ item | titlecase }}</button>  
+        </div>
+      </mat-menu>
+    </div>
+</div>
+
+<mat-divider></mat-divider>
 
 <div class="content-loading" *ngIf="isLoading">
     <mat-spinner></mat-spinner>
 </div>
 
 <div class="all-cards-content" *ngIf="!isLoading">
-    <div class="card" *ngFor="let character of characters">
+    <div class="card" *ngFor="let character of leakedCharacters">
         <div class="img-card">
             <img class="image" src="{{ character.image }}" [alt]="character.name">
         </div>
@@ -19,9 +41,9 @@
                 <h4> {{ character.created | date }} </h4>
             </div>
             <div class="card-text">
-                <span> <strong>Status: </strong> {{ character.status }} </span>
-                <span> <strong>Gender:</strong> {{ character.gender }} </span>
-                <span> <strong>Species:</strong> {{ character.species }} </span>
+                <span> <strong>Status: </strong> {{ character.status | titlecase }} </span>
+                <span> <strong>Gender:</strong> {{ character.gender | titlecase }} </span>
+                <span> <strong>Species:</strong> {{ character.species | titlecase }} </span>
             </div>
             <div>
                 <div class="card-btn">

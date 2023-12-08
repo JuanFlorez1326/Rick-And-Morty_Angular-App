@@ -1,13 +1,35 @@
 <app-ordering
-  [data]="locations"
+  [data]="leakedLocations"
 ></app-ordering>
+
+<div class="filter-content">
+  <div>
+    <h1 class="title">Locations</h1>
+  </div>
+  <div>
+    <button class="btn-second-menu" mat-icon-button matTooltip="Filtering options" [matMenuTriggerFor]="moreMenu">
+      <em class="fa-solid fa-ellipsis-vertical"></em>
+    </button>
+    <mat-menu #moreMenu="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="sort">Filter</button>
+    </mat-menu>
+    <mat-menu #sort="matMenu">
+      <button mat-menu-item (click)="filter('all')">{{ 'all' | titlecase }}</button> 
+      <div *ngFor="let type of types">
+        <button mat-menu-item (click)="filter(type)">{{ type | titlecase }}</button>  
+      </div>
+    </mat-menu>
+  </div>
+</div>
+
+<mat-divider></mat-divider>
 
 <div class="content-loading" *ngIf="isLoading">
   <mat-spinner></mat-spinner>
 </div>
 
 <div  class="card-content" *ngIf="!isLoading">
-  <mat-card class="card" *ngFor="let location of locations">
+  <mat-card class="card" *ngFor="let location of leakedLocations">
     <mat-card-header>
       <mat-card-title>{{ location.name }}</mat-card-title>
       <mat-card-subtitle> <strong>Type:</strong> {{ location.type }}</mat-card-subtitle>
