@@ -2,7 +2,11 @@
   [data]="episodes"
 ></app-ordering>
 
-<div  class="card-content">
+<div class="content-loading" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div  class="card-content" *ngIf="!isLoading">
   <mat-card class="card" *ngFor="let episode of episodes">
     <mat-card-header>
       <mat-card-title>{{ episode.name }}</mat-card-title>

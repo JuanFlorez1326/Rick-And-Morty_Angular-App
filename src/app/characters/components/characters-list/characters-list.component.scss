@@ -6,6 +6,25 @@
     box-sizing: border-box;
 }
 
+.content-loading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-content {
+    display: flex;
+    justify-content: space-between;
+    width: 98%;
+    margin: 0 auto;
+}
+
+.btn-second-menu {
+    position: relative;
+    bottom: 5px;
+}
+
 .all-cards-content {
     width: 100%;
     display: flex;

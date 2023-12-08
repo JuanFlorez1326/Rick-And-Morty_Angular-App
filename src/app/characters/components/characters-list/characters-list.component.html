@@ -1,9 +1,52 @@
 <app-ordering
-    [data]="characters"
+    [data]="leakedCharacters"
 ></app-ordering>
 
-<div class="all-cards-content">
-    <div class="card" *ngFor="let character of characters">
+<div class="filter-content">
+    <div>
+      <h1 class="title">Characters</h1>
+    </div>
+    <div>
+      <button class="btn-second-menu" mat-icon-button matTooltip="Filtering options" [matMenuTriggerFor]="moreMenu">
+        <em class="fa-solid fa-ellipsis-vertical"></em>
+      </button>
+      <mat-menu #moreMenu="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="menuStatus">Filter By Status</button>
+        <button mat-menu-item [matMenuTriggerFor]="menuGender">Filter By Gender</button>
+        <button mat-menu-item [matMenuTriggerFor]="menuSpecies">Filter By Species</button>
+      </mat-menu>
+
+      <mat-menu #menuStatus="matMenu">
+        <button mat-menu-item (click)="filterStatus('all')">{{ 'all' | titlecase }}</button>  
+        <div *ngFor="let item of allStatus">
+          <button mat-menu-item (click)="filterStatus(item)">{{ item | titlecase }}</button>  
+        </div>
+      </mat-menu>
+
+      <mat-menu #menuGender="matMenu">
+        <button mat-menu-item (click)="filterGender('all')">{{ 'all' | titlecase }}</button>  
+        <div *ngFor="let item of allGenders">
+          <button mat-menu-item (click)="filterGender(item)">{{ item | titlecase }}</button>  
+        </div>
+      </mat-menu>
+
+      <mat-menu #menuSpecies="matMenu">
+        <button mat-menu-item (click)="filterSpecies('all')">{{ 'all' | titlecase }}</button>  
+        <div *ngFor="let item of allSpecies">
+          <button mat-menu-item (click)="filterSpecies(item)">{{ item | titlecase }}</button>  
+        </div>
+      </mat-menu>
+    </div>
+</div>
+
+<mat-divider></mat-divider>
+
+<div class="content-loading" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+</div>
+
+<div class="all-cards-content" *ngIf="!isLoading">
+    <div class="card" *ngFor="let character of leakedCharacters">
         <div class="img-card">
             <img class="image" src="{{ character.image }}" [alt]="character.name">
         </div>
@@ -15,9 +58,9 @@
                 <h4> {{ character.created | date }} </h4>
             </div>
             <div class="card-text">
-                <span> <strong>Status: </strong> {{ character.status }} </span>
-                <span> <strong>Gender:</strong> {{ character.gender }} </span>
-                <span> <strong>Species:</strong> {{ character.species }} </span>
+                <span> <strong>Status: </strong> {{ character.status | titlecase }} </span>
+                <span> <strong>Gender:</strong> {{ character.gender | titlecase }} </span>
+                <span> <strong>Species:</strong> {{ character.species | titlecase }} </span>
             </div>
             <div>
                 <div class="card-btn">
