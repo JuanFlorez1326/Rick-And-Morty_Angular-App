@@ -2,15 +2,15 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
-import { CharactersResponse } from '../interfaces/characters.interface';
+import { LocationResponse } from '../interfaces/location.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CharacterService {
+export class LocationsService {
 
   private baseUrl: string = environment.baseUrl;
-  private urlCharacters: string = '/character';
+  private urlCharacters: string = '/location';
   
   public currentPage: string = '1';
 
@@ -18,9 +18,9 @@ export class CharacterService {
     private http: HttpClient
   ) { }
 
-  public getAllCharacters(): Observable<CharactersResponse> {
+  public getAllLocations(): Observable<LocationResponse> {
     const completedUrl: string = this.baseUrl + this.urlCharacters;
     const params: { page: string } = { page: this.currentPage };
-    return this.http.get<CharactersResponse>(completedUrl, { params });
+    return this.http.get<LocationResponse>(completedUrl, { params });
   }
 }

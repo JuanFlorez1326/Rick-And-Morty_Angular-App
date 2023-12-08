@@ -1,0 +1,13 @@
+<div  class="card-content">
+  <mat-card class="card" *ngFor="let location of locations">
+    <mat-card-header>
+      <mat-card-title>{{ location.name }}</mat-card-title>
+      <mat-card-subtitle> <strong>Type:</strong> {{ location.type }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions align="end">
+      <button mat-button class="btn-locations" [routerLink]="['/location/detail', location.id]">
+        More Info...
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

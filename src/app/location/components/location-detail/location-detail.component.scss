@@ -1,0 +1,36 @@
+@import '../../../../scss/variables.scss';
+
+.card-content {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .card {
+        width: 600px;
+        margin: 20px 20px;
+
+        .card-title{ 
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-subtitle {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .card-content-text {
+            display: flex;
+            flex-direction: column;        
+        }
+
+        strong {
+            color: $date-color;
+        }
+
+        .btn-locations {
+            color: $date-color;
+        }
+    }
+}
