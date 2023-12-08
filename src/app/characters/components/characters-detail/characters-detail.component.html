@@ -11,13 +11,18 @@
                 <h4> {{ character?.created | date }} </h4>
             </div>
             <div class="card-text">
-                <span> <strong>Location: </strong> {{ character?.location.name }} </span>
-                <span> <strong>Origin: </strong> {{ character?.origin.name }} </span>
+                <ul>
+                    <li><span> <strong>Location: </strong> {{ character?.location.name }} </span></li>
+                    <li><span> <strong>Origin: </strong> {{ character?.origin.name | titlecase }} </span></li>
+                    <li><span><Strong>Episodes: </Strong> {{ character?.episode.length }} episodes</span></li>
+                </ul>
             </div>
             <div class="card-extra-info-content">
-                <span> <strong>Status: </strong> {{ character?.status }} </span>
-                <span> <strong>Gender:</strong> {{ character?.gender }} </span>
-                <span> <strong>Species:</strong> {{ character?.species }} </span>
+                <ul>
+                    <li><span> <strong>Status: </strong> {{ character?.status }} </span></li>
+                    <li><span> <strong>Gender:</strong> {{ character?.gender }} </span></li>
+                    <li><span> <strong>Species:</strong> {{ character?.species }} </span></li>
+                </ul>
             </div>
             <div class="card-btn">
                 <div>
