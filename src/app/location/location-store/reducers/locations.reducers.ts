@@ -9,15 +9,15 @@ export const initialState: LocationsState = fromAdapters.adapter.getInitialState
     error: null
 });
 
-export function reducer( state = initialState, action: fromActions.CHARACTERS_ACTIONS): LocationsState {
+export function reducer( state = initialState, action: fromActions.LOCATIONS_ACTIONS): LocationsState {
     switch (action.type) {
-        case fromActions.CharactersActionTypes.LOAD_ALL_LOCATIONS: {
+        case fromActions.LocationsActionTypes.LOAD_ALL_LOCATIONS: {
             return { ...state, isLoading: true, success: false, error: null };
         }
-        case fromActions.CharactersActionTypes.LOAD_ALL_LOAD_ALL_LOCATIONS_SUCCESS: {
+        case fromActions.LocationsActionTypes.LOAD_ALL_LOAD_ALL_LOCATIONS_SUCCESS: {
             return fromAdapters.adapter.setAll(action.payload.results, { ...state, isLoading: false, success: true, error: null });
         }
-        case fromActions.CharactersActionTypes.LOAD_ALL_LOAD_ALL_LOCATIONS_ERROR: {
+        case fromActions.LocationsActionTypes.LOAD_ALL_LOAD_ALL_LOCATIONS_ERROR: {
             return { ...state, isLoading: false, success: false, error: action.payload.error };
         }
         default: {

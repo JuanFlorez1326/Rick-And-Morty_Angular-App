@@ -1,5 +1,4 @@
-<div>
-    <app-characters-list
-        [characters]="characters$ | async"
-    ></app-characters-list>
-</div>
+<app-characters-list
+    [characters]="characters$ | async"
+    [isLoading]="isLoading$ | async"
+></app-characters-list>

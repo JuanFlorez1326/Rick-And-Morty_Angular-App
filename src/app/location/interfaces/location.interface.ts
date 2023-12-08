@@ -1,6 +1,6 @@
 export interface LocationResponse {
-    info: Info;
-    results: Locations[];
+    info    : Info;
+    results : Locations[];
 }
 
 export interface Info {

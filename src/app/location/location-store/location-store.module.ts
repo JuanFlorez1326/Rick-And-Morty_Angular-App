@@ -4,7 +4,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { LocationsEffects } from './effects/locations.effects';
 
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
     EffectsModule.forFeature([LocationsEffects])

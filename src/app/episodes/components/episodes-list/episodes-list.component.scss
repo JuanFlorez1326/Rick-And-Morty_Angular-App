@@ -1,0 +1,21 @@
+@import '../../../../scss/variables.scss';
+
+.card-content {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .card {
+        width: 450px;
+        margin: 20px 20px;
+
+        strong {
+            color: $date-color;
+        }
+
+        .btn-locations {
+            color: $date-color;
+        }
+    }
+}

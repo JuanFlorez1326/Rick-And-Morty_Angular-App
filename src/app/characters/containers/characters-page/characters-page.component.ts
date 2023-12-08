@@ -1,5 +1,5 @@
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { Observable, of } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { AppState } from 'src/app/shared/ngrx/app.state';
 import { Character } from '../../interfaces/characters.interface';
@@ -8,13 +8,12 @@ import * as fromReducers from '../../characters-store/reducers/characters.reduce
 
 @Component({
   selector: 'app-characters-page',
-  templateUrl: './characters-page.component.html',
-  styleUrls: ['./characters-page.component.scss']
+  templateUrl: './characters-page.component.html'
 })
 export class CharactersPageComponent implements OnInit {
 
   public characters$!: Observable<Character[]>;
-  public isLoading!: Observable<boolean>;
+  public isLoading$!: Observable<boolean>;
 
   constructor(
     private store: Store<AppState>
@@ -23,6 +22,6 @@ export class CharactersPageComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(new fromActions.LoadAllCharacters());
     this.characters$ = this.store.select(fromReducers.selectAllCharacters);
-    this.isLoading = this.store.select(fromReducers.selectCharactersIsLoading);
+    this.isLoading$ = this.store.select(fromReducers.selectCharactersIsLoading);
   }
 }

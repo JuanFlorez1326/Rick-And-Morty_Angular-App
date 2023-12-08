@@ -6,6 +6,7 @@ import { SharedModule } from './shared/shared.module';
 import { reducers } from './shared/ngrx/app.reducers';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { BrowserModule } from '@angular/platform-browser';
     SharedModule,
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([])
   ],

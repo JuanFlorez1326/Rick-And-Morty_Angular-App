@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import * as fromActions from '../actions/characters.actions';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Observable, catchError, map, mergeMap, of } from 'rxjs';
-import { Character, CharactersResponse } from '../../interfaces/characters.interface';
 import { CharacterService } from '../../services/character.service';
+import { CharactersResponse } from '../../interfaces/characters.interface';
 
 @Injectable()
 export class CharactersEffects {

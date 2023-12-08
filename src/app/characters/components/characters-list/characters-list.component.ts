@@ -9,5 +9,6 @@ import { Character } from '../../interfaces/characters.interface';
 export class CharactersListComponent {
 
   @Input() characters!: Character[] | null;
+  @Input() isLoading!: boolean | null;
 
 }

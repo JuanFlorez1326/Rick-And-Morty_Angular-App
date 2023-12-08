@@ -1,0 +1,68 @@
+
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #sidenav mode="push">
+
+        <mat-toolbar>
+            <span>Menu</span>
+            <button class="btn-angular" (click)="sidenav.toggle()">
+                <a matTooltip="Close menu" class="icon-menu fa-solid fa-bars"></a>
+            </button>
+        </mat-toolbar>
+
+        <mat-nav-list>
+            <div class="navbar-all-options">
+                <div class="option">
+                    <a class="navbar-option" routerLink="/home" mat-list-item routerLinkActive="active" (click)="sidenav.toggle()">
+                        <em class="fa-solid fa-user-group" ></em>
+                        <span routerLinkActive="active">Characters</span>
+                    </a>
+                </div>
+                <div class="option">
+                    <a class="navbar-option" routerLink="/location" mat-list-item routerLinkActive="active" (click)="sidenav.toggle()">
+                        <em class="fa-solid fa-location-dot"></em>
+                        <span routerLinkActive="active">Locations</span>
+                    </a>
+                </div>
+                <div class="option">
+                    <a class="navbar-option" routerLink="/episodes" mat-list-item routerLinkActive="active" (click)="sidenav.toggle()">
+                        <em class="fa-solid fa-clapperboard"></em>
+                        <span routerLinkActive="active">Episodes</span>
+                    </a>
+                </div>
+            </div>
+        </mat-nav-list>
+        
+    </mat-sidenav>
+
+    <mat-toolbar>
+        <div class="navbar-section">
+            <div class="section-menu">
+                <button class="btn-angular" (click)="sidenav.toggle()"><a matTooltip="Open menu" class="icon-menu fa-solid fa-bars icon-angular__space"></a></button>
+                <div class="navbar-logo">
+                    <a class="navbar-logo-option" routerLink="/home">Rick And Morty</a>
+                </div>
+            </div>
+
+            <div class="second-menu-options">
+                <button mat-icon-button matTooltip="More options" [matMenuTriggerFor]="moreMenu">
+                    <em class="fa-solid fa-ellipsis-vertical"></em>
+                </button>
+                <mat-menu #moreMenu="matMenu">
+                    <button mat-menu-item >{{ "Option"}}</button>
+                    <button mat-menu-item [matMenuTriggerFor]="language">{{ "Options"}}</button>
+                </mat-menu>
+                <mat-menu #language="matMenu">
+                    <button mat-menu-item >
+                        {{ "Option 1"  }}
+                    </button>
+                    <button mat-menu-item >
+                        {{ "Option 2" }}
+                    </button>
+                </mat-menu>
+            </div>
+        </div>
+    </mat-toolbar>
+
+    <div><router-outlet></router-outlet></div>
+
+</mat-sidenav-container>

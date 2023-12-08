@@ -17,7 +17,7 @@ export class LocationsEffects {
 
     loadAllCharacters$: Observable<Action> = createEffect(()  => {
         return this.actions$.pipe(
-            ofType(fromActions.CharactersActionTypes.LOAD_ALL_LOCATIONS),
+            ofType(fromActions.LocationsActionTypes.LOAD_ALL_LOCATIONS),
             mergeMap((action: fromActions.LoadAllLocations) => {
                 return this.locationsService.getAllLocations().pipe(
                     map((data: LocationResponse ) => {

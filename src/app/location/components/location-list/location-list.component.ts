@@ -9,4 +9,5 @@ import { Locations } from '../../interfaces/location.interface';
 export class LocationListComponent {
 
   @Input() locations!: Locations[] | null;
+  @Input() isLoading!: boolean | null;
 }

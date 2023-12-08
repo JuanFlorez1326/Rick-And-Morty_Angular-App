@@ -14,6 +14,14 @@ const routes: Routes = [
   {
     path: 'location',
     loadChildren: () => import('./location/location.module').then(m => m.LocationModule)
+  },
+  {
+    path: 'episodes',
+    loadChildren: () => import('./episodes/episodes.module').then(m => m.EpisodesModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'home'
   }
 ];
 

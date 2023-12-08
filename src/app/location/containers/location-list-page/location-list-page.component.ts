@@ -8,13 +8,12 @@ import * as fromReducers from '../../location-store/reducers/locations.reducers'
 
 @Component({
   selector: 'app-location-list-page',
-  templateUrl: './location-list-page.component.html',
-  styleUrls: ['./location-list-page.component.scss']
+  templateUrl: './location-list-page.component.html'
 })
 export class LocationListPageComponent {
 
   public locations$!: Observable<Locations[]>;
-  public isLoading!: Observable<boolean>;
+  public isLoading$!: Observable<boolean>;
 
   constructor(
     private store: Store<AppState>
@@ -23,6 +22,6 @@ export class LocationListPageComponent {
   ngOnInit(): void {
     this.store.dispatch(new fromActions.LoadAllLocations());
     this.locations$ = this.store.select(fromReducers.selectAllLocations);
-    this.isLoading = this.store.select(fromReducers.selectLocationsIsLoading);
+    this.isLoading$ = this.store.select(fromReducers.selectLocationsIsLoading);
   }
 }

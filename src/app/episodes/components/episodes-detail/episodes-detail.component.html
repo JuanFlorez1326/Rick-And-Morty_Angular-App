@@ -1,0 +1,28 @@
+<div class="card-content">
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title class="card-title">
+                <h1>{{ currentEpisode?.name }}</h1>
+            </mat-card-title>
+            <mat-card-subtitle class="card-subtitle"> <strong>Air Date:</strong> {{ currentEpisode?.air_date }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="card-content-text">
+            <ul>
+                <li><span> <strong>Created: </strong> {{ currentEpisode?.created | date }}</span></li>
+                <li><span> <strong>Episode: </strong> {{ currentEpisode?.episode }}</span></li>
+                <li>
+                    <span> 
+                        <strong>Characters:</strong> 
+                        {{ currentEpisode?.characters.length }} 
+                        {{ currentEpisode?.characters.length === 1  ? 'character' : 'characters' }}
+                    </span>
+                </li>
+            </ul>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-button class="btn-locations" [routerLink]="['/episodes']">
+                Go Back
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

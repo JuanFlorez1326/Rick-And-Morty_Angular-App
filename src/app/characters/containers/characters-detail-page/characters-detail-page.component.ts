@@ -9,8 +9,7 @@ import * as fromReducers from '../../characters-store/reducers/characters.reduce
 
 @Component({
   selector: 'app-characters-detail-page',
-  templateUrl: './characters-detail-page.component.html',
-  styleUrls: ['./characters-detail-page.component.scss']
+  templateUrl: './characters-detail-page.component.html'
 })
 export class CharactersDetailPageComponent {
 
