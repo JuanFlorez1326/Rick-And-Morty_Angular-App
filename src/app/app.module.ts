@@ -6,6 +6,7 @@ import { SharedModule } from './shared/shared.module';
 import { reducers } from './shared/ngrx/app.reducers';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -16,11 +17,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SharedModule,
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([])
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
