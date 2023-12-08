@@ -1,0 +1,16 @@
+<div class="second-menu-options">
+    <button class="btn-second-menu" mat-icon-button matTooltip="More options" [matMenuTriggerFor]="moreMenu">
+        <em class="fa-solid fa-ellipsis-vertical"></em>
+    </button>
+    <mat-menu #moreMenu="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="sort">Ordering</button>
+    </mat-menu>
+    <mat-menu #sort="matMenu">
+        <button mat-menu-item (click)="sortAsc()">
+            Upward (A - Z)
+        </button>
+        <button mat-menu-item (click)="sortDesc()">
+            Falling (Z - A)
+        </button>
+    </mat-menu>
+</div>
