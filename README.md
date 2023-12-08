@@ -12,6 +12,10 @@ Rick And Morty: [name url](url)
 ```
 $ npm install
 ```
+or
+```
+$ npm install --force
+```
 
 ## Running the App
 
