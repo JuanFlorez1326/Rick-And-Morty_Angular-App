@@ -1,0 +1,22 @@
+@import '../../../../scss/variables.scss';
+
+.second-menu-options {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+
+    .btn-second-menu {
+        position: relative;
+        bottom: 46px;
+    }
+
+    button {
+        cursor: pointer;
+
+        em {
+            color: $date-color;
+            cursor: pointer;
+            font-size: 20px;
+        }
+    }
+}

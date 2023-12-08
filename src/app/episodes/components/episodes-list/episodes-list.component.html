@@ -1,13 +1,17 @@
+<app-ordering
+  [data]="episodes"
+></app-ordering>
+
 <div  class="card-content">
-    <mat-card class="card" *ngFor="let episode of episodes">
-      <mat-card-header>
-        <mat-card-title>{{ episode.name }}</mat-card-title>
-        <mat-card-subtitle> <strong>Episode:</strong> {{ episode.episode }}</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-actions align="end">
-        <button mat-button class="btn-locations" [routerLink]="['/episodes/detail', episode.id]">
-          More Info...
-        </button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
+  <mat-card class="card" *ngFor="let episode of episodes">
+    <mat-card-header>
+      <mat-card-title>{{ episode.name }}</mat-card-title>
+      <mat-card-subtitle> <strong>Episode:</strong> {{ episode.episode }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions align="end">
+      <button mat-button class="btn-locations" [routerLink]="['/episodes/detail', episode.id]">
+        More Info...
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
