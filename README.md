@@ -5,7 +5,7 @@
 # Rick And Morty - Angular App - Double V Partners
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
 
-Rick And Morty: [name url](url)
+Rick And Morty: [https://rick-and-morty-angular-app.vercel.app](https://rick-and-morty-angular-app.vercel.app)
 
 ## Install Packages
 
