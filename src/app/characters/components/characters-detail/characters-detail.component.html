@@ -1,0 +1,31 @@
+<div class="all-cards-content">
+    <div class="card">
+        <div class="img-card">
+            <img class="image" src="{{ character?.image }}" alt="{{ character?.name }}">
+        </div>
+        <div class="card-content">
+            <div class="card-title">
+                <div class="card-title-content">
+                    <h1> {{ character?.name }} </h1>
+                </div>
+                <h4> {{ character?.created | date }} </h4>
+            </div>
+            <div class="card-text">
+                <span> <strong>Location: </strong> {{ character?.location.name }} </span>
+                <span> <strong>Origin: </strong> {{ character?.origin.name }} </span>
+            </div>
+            <div class="card-extra-info-content">
+                <span> <strong>Status: </strong> {{ character?.status }} </span>
+                <span> <strong>Gender:</strong> {{ character?.gender }} </span>
+                <span> <strong>Species:</strong> {{ character?.species }} </span>
+            </div>
+            <div class="card-btn">
+                <div>
+                    <button mat-button color="warn" [routerLink]="['/home']">
+                        Go Back
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

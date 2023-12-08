@@ -1,0 +1,20 @@
+<div class="card-content">
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title class="card-title">
+        <h1>{{ currentLocation?.name }}</h1>
+      </mat-card-title>
+      <mat-card-subtitle class="card-subtitle"> <strong>Type:</strong> {{ currentLocation?.type }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="card-content-text">
+      <span> <strong>Created: </strong> {{ currentLocation?.created | date }}</span>
+      <span> <strong>Dimension: </strong> {{ currentLocation?.dimension }}</span>
+      <span> <strong>Residents:</strong> {{ currentLocation?.residents.length }} {{ currentLocation?.residents.length === 1  ? 'resident' : 'residents' }}</span>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-button class="btn-locations" [routerLink]="['/location']">
+        Go Back
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
