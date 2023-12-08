@@ -11,12 +11,14 @@
                 <h4> {{ character.created | date }} </h4>
             </div>
             <div class="card-text">
-                <p> {{ character.status }} </p>
+                <span> <strong>Status: </strong> {{ character.status }} </span>
+                <span> <strong>Gender:</strong> {{ character.gender }} </span>
+                <span> <strong>Species:</strong> {{ character.species }} </span>
             </div>
             <div>
                 <div class="card-btn">
                     <div>
-                        <button mat-button color="primary" [routerLink]="['/detail', character.id]">
+                        <button mat-button color="primary" [routerLink]="['/home/detail', character.id]">
                             More Info...
                         </button>
                     </div>

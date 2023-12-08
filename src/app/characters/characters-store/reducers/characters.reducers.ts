@@ -28,6 +28,7 @@ export function reducer( state = initialState, action: fromActions.CHARACTERS_AC
 
 export const getCharactersState = createFeatureSelector<CharactersState>('charactersState');
 export const selectAllCharacters = createSelector(getCharactersState, fromAdapters.selectCharacters);
+export const selectCharacterById = (id: number) => createSelector(getCharactersState, (state: CharactersState) => state.entities[id]);
 
 export const getError = (state: CharactersState) => state.error;
 export const getSuccess = (state: CharactersState) => state.success;

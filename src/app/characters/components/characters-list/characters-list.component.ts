@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Character } from '../../interfaces/characters.interface';
 
 @Component({
@@ -10,10 +10,4 @@ export class CharactersListComponent {
 
   @Input() characters!: Character[] | null;
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes && this.characters) {
-      console.log(changes);
-      console.log(this.characters);
-    }
-  }
 }

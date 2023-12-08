@@ -1,8 +1,8 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
-import { Observable } from 'rxjs';
-import { Character, CharactersResponse } from '../interfaces/characters.interface';
+import { CharactersResponse } from '../interfaces/characters.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,9 @@ import { Character, CharactersResponse } from '../interfaces/characters.interfac
 export class CharacterService {
 
   private baseUrl: string = environment.baseUrl;
-  private urlCharacters: string = '/character';
+  private urlCharacters: string = '/character/';
+  
+  public currentPage: string = '1';
 
   constructor(
     private http: HttpClient
@@ -18,6 +20,7 @@ export class CharacterService {
 
   public getAllCharacters(): Observable<CharactersResponse> {
     const completedUrl: string = this.baseUrl + this.urlCharacters;
-    return this.http.get<CharactersResponse>(completedUrl);
+    const params: { page: string } = { page: this.currentPage };
+    return this.http.get<CharactersResponse>(completedUrl, { params });
   }
 }
