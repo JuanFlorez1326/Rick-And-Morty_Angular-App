@@ -67,6 +67,7 @@ export class FilterComponent {
   }
 
   public getAllTypeLocations() {
+    this.allTypeLocations = [];
     this.locations.forEach((locations: Locations) => {
       if (!this.allTypeLocations.includes(locations.type)) {
         this.allTypeLocations.push(locations.type);
@@ -75,6 +76,7 @@ export class FilterComponent {
   }
 
   public getAllStatus() {
+    this.allStatus = [];
     this.characters.forEach((character: Character) => {
       if (!this.allStatus.includes(character.status)) {
         this.allStatus.push(character.status);
@@ -83,6 +85,7 @@ export class FilterComponent {
   }
 
   public getAllGenders() {
+    this.allGenders = [];
     this.characters.forEach((character: Character) => {
       if (!this.allGenders.includes(character.gender)) {
         this.allGenders.push(character.gender);
@@ -91,6 +94,7 @@ export class FilterComponent {
   }
 
   public getAllSpecies() {
+    this.allSpecies = [];
     this.characters.forEach((character: Character) => {
       if (!this.allSpecies.includes(character.species)) {
         this.allSpecies.push(character.species);
