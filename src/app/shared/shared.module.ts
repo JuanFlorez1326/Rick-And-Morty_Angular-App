@@ -5,12 +5,14 @@ import { MaterialModule } from './material/material.module';
 import { FilterComponent } from './components/filter/filter.component';
 import { HeaderComponent } from './components/header/header.component';
 import { OrderingComponent } from './components/ordering/ordering.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     OrderingComponent,
-    FilterComponent
+    FilterComponent,
+    PaginationComponent
   ],
   imports: [
     RouterModule,
@@ -21,7 +23,8 @@ import { OrderingComponent } from './components/ordering/ordering.component';
     MaterialModule,
     HeaderComponent,
     OrderingComponent,
-    FilterComponent
+    FilterComponent,
+    PaginationComponent
   ]
 })
 export class SharedModule {}

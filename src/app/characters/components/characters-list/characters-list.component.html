@@ -1,17 +1,9 @@
 <app-ordering [data]="filterService.filteredCharacters"></app-ordering>
 
 <div class="filter-content">
-  <div>
-    <h1 class="title">Characters</h1>
-  </div>
-  <div class="paginator-content">
-    <div><button mat-icon-button class="fa-solid fa-angle-left" (click)="previousPage()" [disabled]="counterSum === firstPage"></button></div>
-    <div class="paginator-content-text-page"> <span>Page {{ counterSum }} of {{ lastPage }}</span> </div>
-    <div><button mat-icon-button class="fa-solid fa-angle-right" (click)="nextPage()" [disabled]="counterSum === lastPage"></button></div>
-  </div>
-  <div>
-    <app-filter [characters]="characters"></app-filter>
-  </div>
+  <div><h1 class="title">Characters</h1></div>
+  <div><app-pagination></app-pagination></div>
+  <div><app-filter [characters]="characters"></app-filter></div>
 </div>
 
 <mat-divider></mat-divider>

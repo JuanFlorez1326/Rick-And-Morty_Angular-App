@@ -67,21 +67,6 @@
     flex-wrap: wrap;
 }
 
-.paginator-content {
-    display: flex;
-    position: relative;
-    bottom: 8px;
-
-    .paginator-content-text-page {
-        margin: 0 5px;
-        
-        span {
-            position: relative;
-            top: 14px;
-        }
-    }
-}
-
 .card {
     width: 600px;
     height: 315px;
