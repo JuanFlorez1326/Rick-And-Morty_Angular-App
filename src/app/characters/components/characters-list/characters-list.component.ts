@@ -19,6 +19,7 @@ export class CharactersListComponent {
   public allStatus: string[] = [];
   public allGenders: string[] = [];
   public allSpecies: string[] = [];
+  public searchTerm: string = '';
 
   public counterSum: number = 1;
   public storagePage: string = 'currentPage';
@@ -43,8 +44,16 @@ export class CharactersListComponent {
     }
   }
 
+  public search(event: any) {
+    this.searchTerm = event.target.value;
+    this.leakedCharacters = this.characters.filter( (character: Character) => {
+      return character.name.toLowerCase().includes( this.searchTerm.toLowerCase() );
+    });
+  }
+
   public nextPage() {
     this.counterSum++;
+    this.searchTerm = '';
     this.characterService.currentPage = this.counterSum;
     this.store.dispatch( new fromActions.LoadAllCharacters() );
     localStorage.setItem( this.storagePage, this.counterSum.toString() );
@@ -52,6 +61,7 @@ export class CharactersListComponent {
 
   public previousPage() {
     this.counterSum--;
+    this.searchTerm = '';
     this.characterService.currentPage = this.counterSum;
     this.store.dispatch( new fromActions.LoadAllCharacters() );
     localStorage.setItem( this.storagePage, this.counterSum.toString() );
