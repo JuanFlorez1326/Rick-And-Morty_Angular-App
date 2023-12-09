@@ -6,6 +6,11 @@
 <mat-divider></mat-divider>
 <div class="content-loading" *ngIf="isLoading"> <mat-spinner></mat-spinner> </div>
 
+<app-search 
+  [data]="locations" [isLoading]="isLoading" [filterType]="'locations'"
+  [title]="'Search Locations...'" [example]="'Example: Abadango'"
+></app-search> 
+
 <div  class="card-content" *ngIf="!isLoading">
   <mat-card class="card" *ngFor="let location of filterService.filteredLocations">
     <mat-card-header>

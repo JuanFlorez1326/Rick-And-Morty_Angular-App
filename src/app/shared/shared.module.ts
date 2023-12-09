@@ -6,17 +6,21 @@ import { FilterComponent } from './components/filter/filter.component';
 import { HeaderComponent } from './components/header/header.component';
 import { OrderingComponent } from './components/ordering/ordering.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { SearchComponent } from './components/search/search.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     OrderingComponent,
     FilterComponent,
-    PaginationComponent
+    PaginationComponent,
+    SearchComponent
   ],
   imports: [
     RouterModule,
     MaterialModule,
+    FormsModule,
     CommonModule
   ],
   exports: [
@@ -24,7 +28,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     HeaderComponent,
     OrderingComponent,
     FilterComponent,
-    PaginationComponent
+    PaginationComponent,
+    SearchComponent
   ]
 })
 export class SharedModule {}

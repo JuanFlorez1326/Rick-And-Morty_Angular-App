@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Character } from '../../interfaces/characters.interface';
 import { CharacterService } from '../../services/character.service';
 import { FilterService } from 'src/app/shared/services/filter.service';
 
@@ -15,13 +14,6 @@ export class CharactersListComponent {
 
   constructor(
     public characterService: CharacterService,
-    public filterService: FilterService,
+    public filterService: FilterService
   ) {}
-
-  public search(event: any) {
-    this.filterService.searchTerm = event.target.value;
-    this.filterService.filteredCharacters = this.characters.filter( (character: Character) => {
-      return character.name.toLowerCase().includes( this.filterService.searchTerm.toLowerCase() );
-    });
-  }
 }

@@ -1,25 +1,18 @@
 <app-ordering [data]="filterService.filteredCharacters"></app-ordering>
 
 <div class="filter-content">
-  <div><h1 class="title">Characters</h1></div>
+  <div><h1>Characters</h1></div>
   <div><app-pagination></app-pagination></div>
   <div><app-filter [characters]="characters"></app-filter></div>
 </div>
 
 <mat-divider></mat-divider>
 <div class="content-loading" *ngIf="isLoading"> <mat-spinner></mat-spinner> </div>
-
-<div class="search-content" *ngIf="!isLoading">
-  <mat-form-field class="form-input-name" appearance="outline">
-    <mat-label class="color-input-label">Search Character...</mat-label>
-    <input type="text" autocomplete="nope" [(ngModel)]="filterService.searchTerm" (keyup)="search($event)" class="color-input-label" placeholder="Example: Rick" matInput>
-  </mat-form-field>
-</div>
-
-<div class="content-not-found" *ngIf="!isLoading && filterService.filteredCharacters.length === 0">
-  <div class="content-border-tile">
-    <h1 class="title">No results found with the term "{{filterService.searchTerm}}".</h1>
-  </div>
+<div> 
+  <app-search 
+    [data]="characters" [isLoading]="isLoading" [filterType]="'characters'"
+    [title]="'Search Characters...'" [example]="'Example: Annie'"
+  ></app-search> 
 </div>
 
 <div class="all-cards-content" *ngIf="!isLoading">

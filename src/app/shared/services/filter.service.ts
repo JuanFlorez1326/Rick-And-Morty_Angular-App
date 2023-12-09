@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Character } from 'src/app/characters/interfaces/characters.interface';
+import { Episodes } from 'src/app/episodes/interfaces/episodes.interface';
 import { Locations } from 'src/app/location/interfaces/location.interface';
 
 @Injectable({
@@ -17,6 +18,7 @@ export class FilterService {
   }
 
   public uniqueFilterLocations(locations: Locations[]) {
+    this.searchTerm = '';
     setTimeout(() => this.filteredLocations = locations);
   }
 }
