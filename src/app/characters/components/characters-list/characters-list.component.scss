@@ -22,13 +22,28 @@
 
 .btn-second-menu {
     position: relative;
-    bottom: 5px;
+    bottom: 10px;
 }
 
 .all-cards-content {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+}
+
+.paginator-content {
+    display: flex;
+    position: relative;
+    bottom: 8px;
+
+    .paginator-content-text-page {
+        margin: 0 5px;
+        
+        span {
+            position: relative;
+            top: 14px;
+        }
+    }
 }
 
 .card {

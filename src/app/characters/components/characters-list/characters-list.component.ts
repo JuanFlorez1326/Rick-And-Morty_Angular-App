@@ -1,5 +1,9 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { Character } from '../../interfaces/characters.interface';
+import { CharacterService } from '../../services/character.service';
+import { AppState } from 'src/app/shared/ngrx/app.state';
+import { Store } from '@ngrx/store';
+import * as fromActions from '../../characters-store/actions/characters.actions';
 
 @Component({
   selector: 'app-characters-list',
@@ -10,11 +14,23 @@ export class CharactersListComponent {
 
   @Input() characters!: any;
   @Input() isLoading!: boolean | null;
-
+  
   public leakedCharacters: any[] = [];
   public allStatus: string[] = [];
   public allGenders: string[] = [];
   public allSpecies: string[] = [];
+
+  public counterSum: number = 1;
+  public storagePage: string = 'currentPage';
+
+  constructor(
+    public characterService: CharacterService,
+    private store: Store<AppState>
+  ) { 
+    if ( localStorage.getItem(this.storagePage) ) {
+      this.counterSum = parseInt( localStorage.getItem(this.storagePage)! );
+    }
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes) {
@@ -25,6 +41,20 @@ export class CharactersListComponent {
     if ( changes['characters'] && this.characters ) {
       this.leakedCharacters = changes['characters'].currentValue;
     }
+  }
+
+  public nextPage() {
+    this.counterSum++;
+    this.characterService.currentPage = this.counterSum;
+    this.store.dispatch( new fromActions.LoadAllCharacters() );
+    localStorage.setItem( this.storagePage, this.counterSum.toString() );
+  }
+
+  public previousPage() {
+    this.counterSum--;
+    this.characterService.currentPage = this.counterSum;
+    this.store.dispatch( new fromActions.LoadAllCharacters() );
+    localStorage.setItem( this.storagePage, this.counterSum.toString() );
   }
 
   public filterStatus( value: string ) {
