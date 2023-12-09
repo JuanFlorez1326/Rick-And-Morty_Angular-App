@@ -21,7 +21,6 @@ export class LoadAllLocationsError implements Action {
     constructor(public payload: { error: any }) {}
 }
 
-
 export type LOCATIONS_ACTIONS = 
     | LoadAllLocations
     | LoadAllLocationsSuccess

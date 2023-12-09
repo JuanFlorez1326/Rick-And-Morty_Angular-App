@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment.development';
 import { LocationResponse } from '../interfaces/location.interface';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { LocationResponse } from '../interfaces/location.interface';
 export class LocationsService {
 
   private baseUrl: string = environment.baseUrl;
-  private urlCharacters: string = '/location';
+  private urlLocation: string = '/location';
   
   public currentPage: string = '1';
 
@@ -19,7 +19,7 @@ export class LocationsService {
   ) { }
 
   public getAllLocations(): Observable<LocationResponse> {
-    const completedUrl: string = this.baseUrl + this.urlCharacters;
+    const completedUrl: string = this.baseUrl + this.urlLocation;
     const params: { page: string } = { page: this.currentPage };
     return this.http.get<LocationResponse>(completedUrl, { params });
   }
