@@ -1,5 +1,5 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
-import { Locations } from '../../interfaces/location.interface';
+import { Component, Input } from '@angular/core';
+import { FilterService } from '../../../shared/services/filter.service';
 
 @Component({
   selector: 'app-location-list',
@@ -11,28 +11,7 @@ export class LocationListComponent {
   @Input() locations!: any;
   @Input() isLoading!: boolean | null;
 
-  public leakedLocations: any[] = [];
-  public types: string[] = [];
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes) this.getAllTypes();
-    if ( changes['locations'] && this.locations ) {
-      this.leakedLocations = changes['locations'].currentValue;
-    }
-  }
-
-  public filter( value: string ) {
-    if ( value === 'all' ) return this.leakedLocations = this.locations;
-    this.leakedLocations = this.locations.filter( (character: Locations) => {
-      return character.type.toLowerCase() === value.toLowerCase();
-    });
-  }
-
-  public getAllTypes() {
-    const types: string[] = [];
-    this.locations.forEach( (character: Locations) => {
-      if ( !types.includes( character.type ) ) types.push( character.type );
-    });
-    this.types = types.sort();
-  }
+  constructor(
+    public filterService: FilterService
+  ) {}
 }

@@ -1,0 +1,18 @@
+<div class="search-content" *ngIf="!isLoading">
+  <mat-form-field class="form-input-name" appearance="outline">
+    <mat-label class="color-input-label">{{title}}</mat-label>
+    <input type="text" autocomplete="nope" [(ngModel)]="filterService.searchTerm" (keyup)="search($event, filterType)" class="color-input-label" placeholder="{{example}}" matInput>
+  </mat-form-field>
+</div>
+  
+<div class="content-not-found" 
+  *ngIf="!isLoading && filterService.searchTerm 
+    && !filterService.filteredCharacters.length 
+    && !filterService.filteredLocations.length
+    && !filterService.filteredEpisodes.length
+  "
+>
+  <div class="content-border-tile">
+    <h1 class="title">No results found with the term "{{ filterService.searchTerm }}".</h1>
+  </div>
+</div>

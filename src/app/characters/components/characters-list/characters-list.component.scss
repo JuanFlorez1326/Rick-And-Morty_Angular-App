@@ -14,46 +14,6 @@
     align-items: center;
 }
 
-.search-content {
-    width: 60%;
-    margin: 20px auto;
-
-    .form-input-name {
-        width: 100%;
-        cursor: text;
-        border: none;
-        outline: none;
-        
-        input {
-            outline: none;
-            border: none;
-        }
-    }
-}
-
-.content-not-found {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-
-    .content-border-tile {
-        width: auto;
-        min-width: 60%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 1px solid $date-color;
-        border-radius: 10px;
-        padding: 10px 8px 0px 8px;
-
-        .title {
-            color: $date-color;
-            font-size: 1.5em;
-            font-weight: bold;
-        }
-    }
-}
-
 .filter-content {
     display: flex;
     justify-content: space-between;
@@ -61,30 +21,10 @@
     margin: 0 auto;
 }
 
-.btn-second-menu {
-    position: relative;
-    bottom: 10px;
-}
-
 .all-cards-content {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-}
-
-.paginator-content {
-    display: flex;
-    position: relative;
-    bottom: 8px;
-
-    .paginator-content-text-page {
-        margin: 0 5px;
-        
-        span {
-            position: relative;
-            top: 14px;
-        }
-    }
 }
 
 .card {
@@ -174,10 +114,7 @@
 }
 
 @media screen and (max-width: $large) {
-    .search-content {
-        width: 95%;
-    }
-    
+
     .card {
         width: 90%;
         margin-top:5%;
@@ -217,10 +154,6 @@
 }
 
 @media screen and (max-width: $medium) {
-    .search-content {
-        width: 95%;
-    }
-
     .card {
         width: 90%;
         margin-top:5%;

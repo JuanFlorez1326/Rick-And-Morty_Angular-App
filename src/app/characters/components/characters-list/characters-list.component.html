@@ -1,104 +1,42 @@
-<app-ordering
-    [data]="leakedCharacters"
-></app-ordering>
+<app-ordering [data]="filterService.filteredCharacters"></app-ordering>
 
 <div class="filter-content">
-    <div>
-      <h1 class="title">Characters</h1>
-    </div>
-
-    <div class="paginator-content">
-      <div>
-        <button mat-icon-button class="fa-solid fa-angle-left" (click)="previousPage()" [disabled]="counterSum === 1"></button>
-      </div>
-
-      <div class="paginator-content-text-page">
-        <span>Page {{ counterSum }} of 42</span>
-      </div>
-
-      <div>
-        <button mat-icon-button class="fa-solid fa-angle-right" (click)="nextPage()" [disabled]="counterSum === 42"></button>
-      </div>
-    </div>
-
-    <div>
-      <button class="btn-second-menu" mat-icon-button matTooltip="Filtering options" [matMenuTriggerFor]="moreMenu">
-        <em class="fa-solid fa-ellipsis-vertical"></em>
-      </button>
-      <mat-menu #moreMenu="matMenu">
-        <button mat-menu-item [matMenuTriggerFor]="menuStatus">Filter By Status</button>
-        <button mat-menu-item [matMenuTriggerFor]="menuGender">Filter By Gender</button>
-        <button mat-menu-item [matMenuTriggerFor]="menuSpecies">Filter By Species</button>
-      </mat-menu>
-
-      <mat-menu #menuStatus="matMenu">
-        <button mat-menu-item (click)="filterStatus('all')">{{ 'all' | titlecase }}</button>  
-        <div *ngFor="let item of allStatus">
-          <button mat-menu-item (click)="filterStatus(item)">{{ item | titlecase }}</button>  
-        </div>
-      </mat-menu>
-
-      <mat-menu #menuGender="matMenu">
-        <button mat-menu-item (click)="filterGender('all')">{{ 'all' | titlecase }}</button>  
-        <div *ngFor="let item of allGenders">
-          <button mat-menu-item (click)="filterGender(item)">{{ item | titlecase }}</button>  
-        </div>
-      </mat-menu>
-
-      <mat-menu #menuSpecies="matMenu">
-        <button mat-menu-item (click)="filterSpecies('all')">{{ 'all' | titlecase }}</button>  
-        <div *ngFor="let item of allSpecies">
-          <button mat-menu-item (click)="filterSpecies(item)">{{ item | titlecase }}</button>  
-        </div>
-      </mat-menu>
-    </div>
+  <div><h1>Characters</h1></div>
+  <div><app-pagination></app-pagination></div>
+  <div><app-filter [characters]="characters"></app-filter></div>
 </div>
 
 <mat-divider></mat-divider>
-
-<div class="content-loading" *ngIf="isLoading">
-    <mat-spinner></mat-spinner>
-</div>
-
-<div class="search-content" *ngIf="!isLoading">
-  <mat-form-field class="form-input-name" appearance="outline">
-    <mat-label class="color-input-label">Search Character...</mat-label>
-    <input type="text" autocomplete="nope" [(ngModel)]="searchTerm" (keyup)="search($event)" class="color-input-label" placeholder="Example: Rick" matInput>
-  </mat-form-field>
-</div>
-
-<div class="content-not-found" *ngIf="!isLoading && leakedCharacters.length === 0">
-  <div class="content-border-tile">
-    <h1 class="title">No results found with the term "{{searchTerm}}".</h1>
-  </div>
+<div class="content-loading" *ngIf="isLoading"> <mat-spinner></mat-spinner> </div>
+<div> 
+  <app-search 
+    [data]="characters" [isLoading]="isLoading" [filterType]="'characters'"
+    [title]="'Search Characters...'" [example]="'Example: Annie'"
+  ></app-search> 
 </div>
 
 <div class="all-cards-content" *ngIf="!isLoading">
-    <div class="card" *ngFor="let character of leakedCharacters">
-        <div class="img-card">
-            <img class="image" src="{{ character.image }}" [alt]="character.name">
-        </div>
-        <div class="card-content">
-            <div class="card-title">
-                <div class="card-title-content">
-                    <h1> {{ character.name }} </h1>
-                </div>
-                <h4> {{ character.created | date }} </h4>
-            </div>
-            <div class="card-text">
-                <span> <strong>Status: </strong> {{ character.status | titlecase }} </span>
-                <span> <strong>Gender:</strong> {{ character.gender | titlecase }} </span>
-                <span> <strong>Species:</strong> {{ character.species | titlecase }} </span>
-            </div>
-            <div>
-                <div class="card-btn">
-                    <div>
-                        <button mat-button color="basic" [routerLink]="['/home/detail', character.id]">
-                            More Info...
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="card" *ngFor="let character of filterService.filteredCharacters">
+    <div class="img-card">
+      <img class="image" src="{{ character.image }}" [alt]="character.name">
     </div>
+    <div class="card-content">
+      <div class="card-title">
+        <div class="card-title-content"><h1> {{ character.name }} </h1> </div>
+        <h4> {{ character.created | date }} </h4>
+      </div>
+      <div class="card-text">
+        <span> <strong>Status: </strong> {{ character.status  | titlecase }} </span>
+        <span> <strong>Gender: </strong> {{ character.gender  | titlecase }} </span>
+        <span> <strong>Species:</strong> {{ character.species | titlecase }} </span>
+      </div>
+      <div>
+          <div class="card-btn">
+            <button mat-button color="basic" [routerLink]="['/home/detail', character.id]">
+              More Info...
+            </button>
+          </div>
+      </div>
+    </div>
+  </div>
 </div>

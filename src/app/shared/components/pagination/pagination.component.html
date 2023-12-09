@@ -1,0 +1,5 @@
+<div class="paginator-content">
+    <div><button mat-icon-button class="fa-solid fa-angle-left" (click)="previousPage()" [disabled]="counterSum === firstPage"></button></div>
+    <div class="paginator-content-text-page"> <span>Page {{ counterSum }} of {{ lastPage }}</span> </div>
+    <div><button mat-icon-button class="fa-solid fa-angle-right" (click)="nextPage()" [disabled]="counterSum === lastPage"></button></div>
+</div>
