@@ -16,7 +16,9 @@ export class CharacterService {
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) { 
+    this.currentPage = parseInt( localStorage.getItem('currentPage')! );
+  }
 
   public getAllCharacters(): Observable<CharactersResponse> {
     const completedUrl: string = this.baseUrl + this.urlCharacters;
