@@ -18,6 +18,8 @@ export class CharactersListComponent {
   
   public searchTerm: string = '';
   public counterSum: number = 1;
+  public firstPage : number = 1;
+  public lastPage  : number = 42;
   public storagePage: string = 'currentPage';
 
   constructor(
