@@ -4,9 +4,10 @@
   </button>
 
   <mat-menu #moreMenu="matMenu">
-    <button mat-menu-item [matMenuTriggerFor]="menuStatus">Filter By Status</button>
-    <button mat-menu-item [matMenuTriggerFor]="menuGender">Filter By Gender</button>
-    <button mat-menu-item [matMenuTriggerFor]="menuSpecies">Filter By Species</button>
+    <button mat-menu-item [matMenuTriggerFor]="menuStatus" *ngIf="allStatus.length">Filter By Status</button>
+    <button mat-menu-item [matMenuTriggerFor]="menuGender" *ngIf="allGenders.length">Filter By Gender</button>
+    <button mat-menu-item [matMenuTriggerFor]="menuSpecies" *ngIf="allSpecies.length">Filter By Species</button>
+    <button mat-menu-item [matMenuTriggerFor]="menuLocations" *ngIf="allTypeLocations.length">Filter By Type</button>
   </mat-menu>
 
   <mat-menu #menuStatus="matMenu">
@@ -27,6 +28,13 @@
     <button mat-menu-item (click)="allCharacters()">{{ 'all' | titlecase }}</button>  
     <div *ngFor="let item of allSpecies">
       <button mat-menu-item (click)="filterBySpecies(item)">{{ item | titlecase }}</button>  
+    </div>
+  </mat-menu>
+
+  <mat-menu #menuLocations="matMenu">
+    <button mat-menu-item (click)="allLocations()">{{ 'all' | titlecase }}</button>  
+    <div *ngFor="let item of allTypeLocations">
+      <button mat-menu-item (click)="filterByLocation(item)">{{ item | titlecase }}</button>  
     </div>
   </mat-menu>
 </div>
