@@ -60,21 +60,21 @@ export class CharactersListComponent {
   public filterStatus( value: string ) {
     if ( value === 'all' ) return this.leakedCharacters = this.characters;
     this.leakedCharacters = this.characters.filter( (character: Character) => {
-      return character.status.toLowerCase().includes( value.toLowerCase() );
+      return character.status.toLowerCase() === value.toLowerCase();
     });
   }
 
   public filterGender( value: string ) {
     if ( value === 'all' ) return this.leakedCharacters = this.characters;
     this.leakedCharacters = this.characters.filter( (character: Character) => {
-      return character.gender.toLowerCase().includes( value.toLowerCase() );
+      return character.gender.toLowerCase() === value.toLowerCase();
     });
   }
 
   public filterSpecies( value: string ) {
     if ( value === 'all' ) return this.leakedCharacters = this.characters;
     this.leakedCharacters = this.characters.filter( (character: Character) => {
-      return character.species.toLowerCase().includes( value.toLowerCase() );
+      return character.species.toLowerCase()  === value.toLowerCase();
     });
   }
 

@@ -24,7 +24,7 @@ export class LocationListComponent {
   public filter( value: string ) {
     if ( value === 'all' ) return this.leakedLocations = this.locations;
     this.leakedLocations = this.locations.filter( (character: Locations) => {
-      return character.type.toLowerCase().includes( value.toLowerCase() );
+      return character.type.toLowerCase() === value.toLowerCase();
     });
   }
 
