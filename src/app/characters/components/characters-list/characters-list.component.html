@@ -1,5 +1,5 @@
 <app-ordering
-    [data]="leakedCharacters"
+    [data]="filterService.filteredCharacters"
 ></app-ordering>
 
 <div class="filter-content">
@@ -22,35 +22,7 @@
     </div>
 
     <div>
-      <button class="btn-second-menu" mat-icon-button matTooltip="Filtering options" [matMenuTriggerFor]="moreMenu">
-        <em class="fa-solid fa-ellipsis-vertical"></em>
-      </button>
-      <mat-menu #moreMenu="matMenu">
-        <button mat-menu-item [matMenuTriggerFor]="menuStatus">Filter By Status</button>
-        <button mat-menu-item [matMenuTriggerFor]="menuGender">Filter By Gender</button>
-        <button mat-menu-item [matMenuTriggerFor]="menuSpecies">Filter By Species</button>
-      </mat-menu>
-
-      <mat-menu #menuStatus="matMenu">
-        <button mat-menu-item (click)="filterStatus('all')">{{ 'all' | titlecase }}</button>  
-        <div *ngFor="let item of allStatus">
-          <button mat-menu-item (click)="filterStatus(item)">{{ item | titlecase }}</button>  
-        </div>
-      </mat-menu>
-
-      <mat-menu #menuGender="matMenu">
-        <button mat-menu-item (click)="filterGender('all')">{{ 'all' | titlecase }}</button>  
-        <div *ngFor="let item of allGenders">
-          <button mat-menu-item (click)="filterGender(item)">{{ item | titlecase }}</button>  
-        </div>
-      </mat-menu>
-
-      <mat-menu #menuSpecies="matMenu">
-        <button mat-menu-item (click)="filterSpecies('all')">{{ 'all' | titlecase }}</button>  
-        <div *ngFor="let item of allSpecies">
-          <button mat-menu-item (click)="filterSpecies(item)">{{ item | titlecase }}</button>  
-        </div>
-      </mat-menu>
+      <app-filter [characters]="characters"></app-filter>
     </div>
 </div>
 
@@ -67,14 +39,14 @@
   </mat-form-field>
 </div>
 
-<div class="content-not-found" *ngIf="!isLoading && leakedCharacters.length === 0">
+<div class="content-not-found" *ngIf="!isLoading && filterService.filteredCharacters.length === 0">
   <div class="content-border-tile">
     <h1 class="title">No results found with the term "{{searchTerm}}".</h1>
   </div>
 </div>
 
 <div class="all-cards-content" *ngIf="!isLoading">
-    <div class="card" *ngFor="let character of leakedCharacters">
+    <div class="card" *ngFor="let character of filterService.filteredCharacters">
         <div class="img-card">
             <img class="image" src="{{ character.image }}" [alt]="character.name">
         </div>
@@ -86,8 +58,8 @@
                 <h4> {{ character.created | date }} </h4>
             </div>
             <div class="card-text">
-                <span> <strong>Status: </strong> {{ character.status | titlecase }} </span>
-                <span> <strong>Gender:</strong> {{ character.gender | titlecase }} </span>
+                <span> <strong>Status: </strong> {{ character.status  | titlecase }} </span>
+                <span> <strong>Gender: </strong> {{ character.gender  | titlecase }} </span>
                 <span> <strong>Species:</strong> {{ character.species | titlecase }} </span>
             </div>
             <div>
