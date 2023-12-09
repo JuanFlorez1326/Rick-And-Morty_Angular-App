@@ -3,6 +3,7 @@ import { FilterService } from '../../services/filter.service';
 import { CharacterService } from 'src/app/characters/services/character.service';
 import { Character } from 'src/app/characters/interfaces/characters.interface';
 import { Locations } from 'src/app/location/interfaces/location.interface';
+import { Episodes } from 'src/app/episodes/interfaces/episodes.interface';
 
 @Component({
   selector: 'app-search',
@@ -32,6 +33,10 @@ export class SearchComponent {
     } else if (filterType === 'locations') {
       this.filterService.filteredLocations = this.data.filter((location: Locations) => {
         return location.name.toLowerCase().includes(this.filterService.searchTerm.toLowerCase());
+      });
+    } else if (filterType === 'episodes') {
+      this.filterService.filteredEpisodes = this.data.filter((episode: Episodes) => {
+        return episode.name.toLowerCase().includes(this.filterService.searchTerm.toLowerCase());
       });
     }
   }

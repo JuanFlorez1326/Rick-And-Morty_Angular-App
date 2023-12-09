@@ -10,6 +10,7 @@ export class FilterService {
 
   public filteredCharacters: Character[] = [];
   public filteredLocations : Locations[] = [];
+  public filteredEpisodes  : Episodes [] = [];
   public searchTerm!: string;
 
   public uniqueFilter(characters: Character[]) {
@@ -20,5 +21,10 @@ export class FilterService {
   public uniqueFilterLocations(locations: Locations[]) {
     this.searchTerm = '';
     setTimeout(() => this.filteredLocations = locations);
+  }
+
+  public uniqueFilterEpisodes(episodes: Episodes[]) {
+    this.searchTerm = '';
+    setTimeout(() => this.filteredEpisodes = episodes);
   }
 }

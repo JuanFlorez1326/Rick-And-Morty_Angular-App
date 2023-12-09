@@ -6,7 +6,11 @@
 </div>
   
 <div class="content-not-found" 
-  *ngIf="!isLoading && filterService.searchTerm && !filterService.filteredCharacters.length && !filterService.filteredLocations.length"
+  *ngIf="!isLoading && filterService.searchTerm 
+    && !filterService.filteredCharacters.length 
+    && !filterService.filteredLocations.length
+    && !filterService.filteredEpisodes.length
+  "
 >
   <div class="content-border-tile">
     <h1 class="title">No results found with the term "{{ filterService.searchTerm }}".</h1>

@@ -1,7 +1,8 @@
 import { FilterService } from '../../services/filter.service';
 import { Component, Input, SimpleChanges } from '@angular/core';
-import { Character } from 'src/app/characters/interfaces/characters.interface';
+import { Episodes } from 'src/app/episodes/interfaces/episodes.interface';
 import { Locations } from 'src/app/location/interfaces/location.interface';
+import { Character } from 'src/app/characters/interfaces/characters.interface';
 
 @Component({
   selector: 'app-filter',
@@ -12,9 +13,11 @@ export class FilterComponent {
 
   @Input() characters: Character[] = [];
   @Input() locations : Locations[] = [];
+  @Input() episodes  : Episodes[] = [];
 
   public leakedCharacters: Character[] = [];
-  public leakedLocations: Locations[] = [];
+  public leakedLocations : Locations[] = [];
+  public leakedEpisodes  : Episodes [] = [];
 
   public allStatus : string[] = [];
   public allGenders: string[] = [];
@@ -33,6 +36,7 @@ export class FilterComponent {
       this.getAllTypeLocations();
       this.allCharacters();
       this.allLocations();
+      this.allEpisodes();
     }
   }
 
@@ -44,6 +48,11 @@ export class FilterComponent {
   public allLocations() {
     this.leakedLocations = this.locations;
     this.filterService.uniqueFilterLocations(this.leakedLocations);
+  }
+
+  public allEpisodes() {
+    this.leakedEpisodes = this.episodes;
+    this.filterService.uniqueFilterEpisodes(this.leakedEpisodes);
   }
 
   public filterByStatus( status: string ) {    
