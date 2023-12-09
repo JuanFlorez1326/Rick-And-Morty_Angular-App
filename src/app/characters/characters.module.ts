@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
@@ -7,7 +8,6 @@ import { CharactersListComponent } from './components/characters-list/characters
 import { CharactersPageComponent } from './containers/characters-page/characters-page.component';
 import { CharactersDetailComponent } from './components/characters-detail/characters-detail.component';
 import { CharactersDetailPageComponent } from './containers/characters-detail-page/characters-detail-page.component';
-import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {

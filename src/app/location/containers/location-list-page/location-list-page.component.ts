@@ -1,5 +1,5 @@
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { Observable, of } from 'rxjs';
 import { Component } from '@angular/core';
 import { AppState } from 'src/app/shared/ngrx/app.state';
 import { Locations } from '../../interfaces/location.interface';

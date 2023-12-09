@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromAdapters from '../adapters/locations.adapters';
-import { LocationsState } from "../states/locations.state";
 import * as fromActions from '../actions/locations.actions';
+import { LocationsState } from "../states/locations.state";
 
 export const initialState: LocationsState = fromAdapters.adapter.getInitialState({
     isLoading: false,

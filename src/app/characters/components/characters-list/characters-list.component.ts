@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/shared/ngrx/app.state';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { Character } from '../../interfaces/characters.interface';
 import { CharacterService } from '../../services/character.service';
-import { AppState } from 'src/app/shared/ngrx/app.state';
-import { Store } from '@ngrx/store';
 import * as fromActions from '../../characters-store/actions/characters.actions';
 
 @Component({
@@ -16,11 +16,10 @@ export class CharactersListComponent {
   @Input() isLoading!: boolean | null;
   
   public leakedCharacters: any[] = [];
-  public allStatus: string[] = [];
+  public allStatus : string[] = [];
   public allGenders: string[] = [];
   public allSpecies: string[] = [];
   public searchTerm: string = '';
-
   public counterSum: number = 1;
   public storagePage: string = 'currentPage';
 
@@ -68,6 +67,7 @@ export class CharactersListComponent {
   }
 
   public filterStatus( value: string ) {
+    this.searchTerm = '';
     if ( value === 'all' ) return this.leakedCharacters = this.characters;
     this.leakedCharacters = this.characters.filter( (character: Character) => {
       return character.status.toLowerCase() === value.toLowerCase();
@@ -75,6 +75,7 @@ export class CharactersListComponent {
   }
 
   public filterGender( value: string ) {
+    this.searchTerm = '';
     if ( value === 'all' ) return this.leakedCharacters = this.characters;
     this.leakedCharacters = this.characters.filter( (character: Character) => {
       return character.gender.toLowerCase() === value.toLowerCase();
@@ -82,6 +83,7 @@ export class CharactersListComponent {
   }
 
   public filterSpecies( value: string ) {
+    this.searchTerm = '';
     if ( value === 'all' ) return this.leakedCharacters = this.characters;
     this.leakedCharacters = this.characters.filter( (character: Character) => {
       return character.species.toLowerCase()  === value.toLowerCase();
