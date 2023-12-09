@@ -67,6 +67,7 @@ export class CharactersListComponent {
   }
 
   public filterStatus( value: string ) {
+    this.searchTerm = '';
     if ( value === 'all' ) return this.leakedCharacters = this.characters;
     this.leakedCharacters = this.characters.filter( (character: Character) => {
       return character.status.toLowerCase() === value.toLowerCase();
@@ -74,6 +75,7 @@ export class CharactersListComponent {
   }
 
   public filterGender( value: string ) {
+    this.searchTerm = '';
     if ( value === 'all' ) return this.leakedCharacters = this.characters;
     this.leakedCharacters = this.characters.filter( (character: Character) => {
       return character.gender.toLowerCase() === value.toLowerCase();
@@ -81,6 +83,7 @@ export class CharactersListComponent {
   }
 
   public filterSpecies( value: string ) {
+    this.searchTerm = '';
     if ( value === 'all' ) return this.leakedCharacters = this.characters;
     this.leakedCharacters = this.characters.filter( (character: Character) => {
       return character.species.toLowerCase()  === value.toLowerCase();
