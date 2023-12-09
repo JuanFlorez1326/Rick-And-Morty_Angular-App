@@ -16,7 +16,6 @@ export class CharactersListComponent {
   @Input() characters!: any;
   @Input() isLoading!: boolean | null;
   
-  public searchTerm: string = '';
   public counterSum: number = 1;
   public firstPage : number = 1;
   public lastPage  : number = 42;
@@ -33,15 +32,15 @@ export class CharactersListComponent {
   }
 
   public search(event: any) {
-    this.searchTerm = event.target.value;
+    this.filterService.searchTerm = event.target.value;
     this.filterService.filteredCharacters = this.characters.filter( (character: Character) => {
-      return character.name.toLowerCase().includes( this.searchTerm.toLowerCase() );
+      return character.name.toLowerCase().includes( this.filterService.searchTerm.toLowerCase() );
     });
   }
 
   public nextPage() {
     this.counterSum++;
-    this.searchTerm = '';
+    this.filterService.searchTerm = '';
     this.characterService.currentPage = this.counterSum;
     this.store.dispatch( new fromActions.LoadAllCharacters() );
     localStorage.setItem( this.storagePage, this.counterSum.toString() );
@@ -49,7 +48,7 @@ export class CharactersListComponent {
 
   public previousPage() {
     this.counterSum--;
-    this.searchTerm = '';
+    this.filterService.searchTerm = '';
     this.characterService.currentPage = this.counterSum;
     this.store.dispatch( new fromActions.LoadAllCharacters() );
     localStorage.setItem( this.storagePage, this.counterSum.toString() );

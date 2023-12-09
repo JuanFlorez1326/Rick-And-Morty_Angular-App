@@ -9,8 +9,10 @@ export class FilterService {
 
   public filteredCharacters: Character[] = [];
   public filteredLocations : Locations[] = [];
+  public searchTerm!: string;
 
   public uniqueFilter(characters: Character[]) {
+    this.searchTerm = '';
     setTimeout(() => this.filteredCharacters = characters);
   }
 

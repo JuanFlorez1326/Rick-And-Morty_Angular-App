@@ -20,13 +20,13 @@
 <div class="search-content" *ngIf="!isLoading">
   <mat-form-field class="form-input-name" appearance="outline">
     <mat-label class="color-input-label">Search Character...</mat-label>
-    <input type="text" autocomplete="nope" [(ngModel)]="searchTerm" (keyup)="search($event)" class="color-input-label" placeholder="Example: Rick" matInput>
+    <input type="text" autocomplete="nope" [(ngModel)]="filterService.searchTerm" (keyup)="search($event)" class="color-input-label" placeholder="Example: Rick" matInput>
   </mat-form-field>
 </div>
 
 <div class="content-not-found" *ngIf="!isLoading && filterService.filteredCharacters.length === 0">
   <div class="content-border-tile">
-    <h1 class="title">No results found with the term "{{searchTerm}}".</h1>
+    <h1 class="title">No results found with the term "{{filterService.searchTerm}}".</h1>
   </div>
 </div>
 
