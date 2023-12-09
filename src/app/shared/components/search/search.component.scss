@@ -39,3 +39,15 @@
         }
     }
 }
+
+@media screen and (max-width: $large) {
+    .search-content {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: $medium) {
+    .search-content {
+        width: 95%;
+    }
+}
